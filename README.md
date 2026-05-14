@@ -4,15 +4,23 @@ This project contains 5 JavaScript files demonstrating array methods, loops, con
 
 ## Files
 
+### Demo Versions (Auto-run with test data):
 - **question1.js** - Smart ATM & Transaction History (Array Mutation Methods)
 - **question2.js** - Processing Loan Applications (Iterating Methods)
 - **question3.js** - Fraud Detection & Ledger Auditing (Accessor & Search Methods)
 - **question4.js** - Bank Mergers & Data Cleanup (Formatting & Structuring Methods)
 - **question5.js** - Security & Reporting System (Strings & Logic)
 
+### Interactive Versions (User input required):
+- **question1-interactive.js** - Interactive ATM with menu
+- **question2-interactive.js** - Interactive loan processing
+- **question3-interactive.js** - Interactive fraud detection
+- **question4-interactive.js** - Interactive bank merger
+- **question5-interactive.js** - Interactive security system
+
 ## How to Run
 
-### Option 1: Run individual files with Node.js
+### Option 1: Demo Versions (No input needed - runs automatically)
 
 ```bash
 node question1.js
@@ -22,13 +30,23 @@ node question4.js
 node question5.js
 ```
 
-### Option 2: Run all files at once
+### Option 2: Interactive Versions (User input required)
 
 ```bash
-node question1.js && node question2.js && node question3.js && node question4.js && node question5.js
+node question1-interactive.js
+node question2-interactive.js
+node question3-interactive.js
+node question4-interactive.js
+node question5-interactive.js
 ```
 
-### Option 3: Run in browser console
+### Option 3: Run all demos at once
+
+```bash
+node run-all.js
+```
+
+### Option 4: Run in browser console
 
 Copy and paste the content of any file into your browser's developer console (F12).
 

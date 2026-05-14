@@ -10,6 +10,11 @@
     "q3": "node question3.js",
     "q4": "node question4.js",
     "q5": "node question5.js",
+    "q1-interactive": "node question1-interactive.js",
+    "q2-interactive": "node question2-interactive.js",
+    "q3-interactive": "node question3-interactive.js",
+    "q4-interactive": "node question4-interactive.js",
+    "q5-interactive": "node question5-interactive.js",
     "test": "node run-all.js"
   },
   "keywords": [
