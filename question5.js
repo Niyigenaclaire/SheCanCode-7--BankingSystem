@@ -1,29 +1,51 @@
-// Question 5: The Security & Reporting System (Strings & Logic)
+// Question 5: Security & Reporting System (Interactive Version)
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 console.log("=== Question 5: Security & Reporting System ===\n");
 
+function askQuestion(query) {
+  return new Promise(resolve => rl.question(query, resolve));
+}
+
 // Part A: Password Validation
-/**
- * Validate bank password against security rules
- * @param {string} password - Password to validate
- * @returns {string} "Access Granted" or "Access Denied"
- */
 function validateBankPassword(password) {
-  // Rule 1: At least 8 characters long
+  const errors = [];
+  
+  // Rule 1: At least 8 characters
   if (password.length < 8) {
-    return "Access Denied";
+    errors.push("❌ Password must be at least 8 characters long");
+  } else {
+    console.log("✓ Length requirement met (8+ characters)");
   }
   
-  // Rule 2: Must not contain "password" (case insensitive)
+  // Rule 2: Must not contain "password"
   if (password.toLowerCase().includes("password")) {
-    return "Access Denied";
+    errors.push("❌ Password cannot contain the word 'password'");
+  } else {
+    console.log("✓ Does not contain forbidden word 'password'");
   }
   
-  // Rule 3: Must contain at least one vowel (a, e, i, o, u)
+  // Rule 3: Must contain at least one vowel
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   const hasVowel = vowels.some(vowel => password.toLowerCase().includes(vowel));
   
   if (!hasVowel) {
+    errors.push("❌ Password must contain at least one vowel (a, e, i, o, u)");
+  } else {
+    console.log("✓ Contains at least one vowel");
+  }
+  
+  console.log();
+  
+  if (errors.length > 0) {
+    console.log("Validation errors:");
+    errors.forEach(error => console.log("  " + error));
     return "Access Denied";
   }
   
@@ -31,62 +53,94 @@ function validateBankPassword(password) {
 }
 
 // Part B: Yearly Report Generation
-/**
- * Generate yearly report with leap year detection and anniversary tracking
- * @param {number} startYear - Starting year
- * @param {number} endYear - Ending year
- */
 function generateYearlyReport(startYear, endYear) {
-  console.log(`\nGenerating report from ${startYear} to ${endYear}:\n`);
+  console.log(`\n📅 Generating report from ${startYear} to ${endYear}:\n`);
   
   for (let year = startYear; year <= endYear; year++) {
     // Check if leap year
     const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
     
     if (isLeapYear) {
-      console.log(`Year ${year} is a special audit year.`);
+      console.log(`🗓️  Year ${year} is a special audit year.`);
     }
     
-    // FizzBuzz Bonus: Check for anniversaries
-    // Check for decade anniversary first (divisible by 10)
+    // Check for decade anniversary (divisible by 10)
     if (year % 10 === 0) {
-      console.log(`${year} - Decade Anniversary`);
+      console.log(`🎉 ${year} - Decade Anniversary`);
     }
-    // Then check for 5-year anniversary (divisible by 5 but not by 10)
+    // Check for 5-year anniversary (divisible by 5 but not 10)
     else if (year % 5 === 0) {
-      console.log(`${year} - 5 Year Anniversary`);
+      console.log(`🎊 ${year} - 5 Year Anniversary`);
     }
   }
 }
 
-// Demo Part A: Test password validation
-console.log("--- Part A: Password Validation ---\n");
+async function mainMenu() {
+  console.log("\n--- Security System Menu ---");
+  console.log("1. Validate Password");
+  console.log("2. Generate Yearly Report");
+  console.log("3. Exit");
+  console.log("---------------------------");
+  
+  const choice = await askQuestion("Enter your choice (1-3): ");
+  console.log();
+  
+  switch (choice) {
+    case "1":
+      await passwordValidation();
+      await mainMenu();
+      break;
+      
+    case "2":
+      await yearlyReport();
+      await mainMenu();
+      break;
+      
+    case "3":
+      console.log("Thank you for using the Security System! 👋");
+      rl.close();
+      break;
+      
+    default:
+      console.log("❌ Invalid choice. Please enter 1-3.");
+      await mainMenu();
+  }
+}
 
-const testPasswords = [
-  "MySecure1",      // Valid: 9 chars, no "password", has vowels
-  "short",          // Invalid: too short
-  "password123",    // Invalid: contains "password"
-  "MyPassword1",    // Invalid: contains "password" (case insensitive)
-  "Str0ngPwd",      // Valid: 9 chars, no "password", has vowel 'o'
-  "12345678",       // Invalid: no vowels
-  "SecureBank2024"  // Valid: long enough, no "password", has vowels
-];
+async function passwordValidation() {
+  console.log("--- Part A: Password Validation ---\n");
+  console.log("Password Requirements:");
+  console.log("  • At least 8 characters long");
+  console.log("  • Must not contain 'password'");
+  console.log("  • Must contain at least one vowel (a, e, i, o, u)\n");
+  
+  const password = await askQuestion("Enter password to validate: ");
+  console.log();
+  
+  const result = validateBankPassword(password);
+  console.log(`\n🔐 Result: ${result}`);
+  
+  if (result === "Access Granted") {
+    console.log("✅ Password is valid!");
+  } else {
+    console.log("❌ Password is invalid. Please try again.");
+  }
+}
 
-testPasswords.forEach(pwd => {
-  const result = validateBankPassword(pwd);
-  console.log(`Password: "${pwd}" -> ${result}`);
-});
+async function yearlyReport() {
+  console.log("--- Part B: Yearly Report Generation ---\n");
+  
+  const startYear = parseInt(await askQuestion("Enter start year: "));
+  const endYear = parseInt(await askQuestion("Enter end year: "));
+  
+  if (isNaN(startYear) || isNaN(endYear) || startYear > endYear) {
+    console.log("❌ Invalid year range. Please try again.");
+    return;
+  }
+  
+  generateYearlyReport(startYear, endYear);
+}
 
-// Demo Part B: Test yearly report generation
-console.log("\n--- Part B: Yearly Report Generation ---");
-
-generateYearlyReport(2020, 2030);
-
-console.log("\n=== Additional Test: Leap Year Examples ===");
-console.log("Testing specific leap years:");
-
-const testYears = [2000, 1900, 2024, 2100];
-testYears.forEach(year => {
-  const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-  console.log(`${year}: ${isLeap ? 'Leap Year' : 'Not a Leap Year'}`);
-});
+// Start the program
+console.log("Welcome to the IronClad Security & Reporting System!\n");
+mainMenu();

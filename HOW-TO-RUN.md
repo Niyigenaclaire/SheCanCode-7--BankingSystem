@@ -1,74 +1,27 @@
 # How to Run the IronClad Banking System
 
-## 🎯 Two Versions Available
-
-### 1. **Demo Versions** (Automatic - No Input Needed)
-These run automatically with pre-defined test data to show you how everything works.
-
-### 2. **Interactive Versions** (User Input Required)
-These ask you to enter data and make choices - perfect for testing your own scenarios!
-
----
-
 ## 🚀 Quick Start
 
-### Run Demo Versions (Automatic):
+All files are **interactive** and require user input.
+
+### Run Any Question:
 
 ```bash
-# Question 1: ATM System
 node question1.js
-
-# Question 2: Loan Processing
 node question2.js
-
-# Question 3: Fraud Detection
 node question3.js
-
-# Question 4: Bank Mergers
 node question4.js
-
-# Question 5: Security System
 node question5.js
-
-# Run ALL demos at once:
-node run-all.js
-```
-
-### Run Interactive Versions (With User Input):
-
-```bash
-# Question 1: Interactive ATM
-node question1-interactive.js
-
-# Question 2: Interactive Loan Processing
-node question2-interactive.js
-
-# Question 3: Interactive Fraud Detection
-node question3-interactive.js
-
-# Question 4: Interactive Bank Merger
-node question4-interactive.js
-
-# Question 5: Interactive Security System
-node question5-interactive.js
 ```
 
 ---
 
-## 📝 What Each Interactive Version Does
+## 📝 What Each Question Does
 
-### Question 1 Interactive (ATM):
-- Shows a menu with options
-- You can:
-  - Make withdrawals
-  - Make deposits
-  - Process fees
-  - Undo transactions
-  - Clear oldest transaction
-  - View transaction history
-  - Exit
+### Question 1: Interactive ATM System
+**Run:** `node question1.js`
 
-**Example:**
+Shows a menu with options:
 ```
 --- ATM Menu ---
 1. Withdrawal
@@ -78,129 +31,147 @@ node question5-interactive.js
 5. Clear Oldest
 6. View History
 7. Exit
-----------------
-Enter your choice (1-7): 2
-Enter deposit amount: $500
-✅ Deposit successful: $500
-💰 Current balance: $1500
 ```
 
-### Question 2 Interactive (Loan Processing):
-- Enter credit scores separated by commas
-- System processes and shows:
-  - Eligible applicants (score > 700)
-  - Adjusted scores (+20 points)
-  - Risk metrics
-  - Perfect scores
-  - Severe risks
+**Example interaction:**
+- Choose "2" for Deposit → Enter "500"
+- Choose "1" for Withdrawal → Enter "200"
+- Choose "6" to view history
+- Choose "7" to exit
 
-**Example:**
-```
-Enter credit scores: 650,800,500,720,410,900
-```
+**Array Methods Used:** push, pop, shift, unshift
 
-### Question 3 Interactive (Fraud Detection):
-- Enter transaction IDs
-- Enter a fraud ID to check
-- System shows:
-  - If fraud exists
-  - Position of fraud
-  - Last 3 transactions
-  - Removes fraud
-  - Clears safe transactions
+---
 
-**Example:**
-```
-Enter transaction IDs: 1042,8922,3301,5510,7719,9920
-Enter fraud ID to check: 5510
-```
+### Question 2: Loan Processing
+**Run:** `node question2.js`
 
-### Question 4 Interactive (Bank Merger):
-- Enter customer names for Branch A
-- Enter customer names for Branch B
-- Enter messy nested data
-- System shows:
-  - Merged customers
-  - Flattened data
-  - Sorted data
-  - Welcome banner
-  - Teller windows
+**Prompts:**
+- Enter credit scores (comma-separated)
 
-**Example:**
-```
-Enter Branch A customers: Alice,Bob
-Enter Branch B customers: Charlie,Diana
-Enter messy data: Eve,Frank;Grace;Hank,Ivy
-```
+**Example input:** `650,800,500,720,410,900`
 
-### Question 5 Interactive (Security System):
-- Menu with 2 options:
-  1. **Validate Password**: Enter a password to check if it meets requirements
-  2. **Generate Yearly Report**: Enter start and end years for report
+**Shows:**
+- Eligible applicants (score > 700)
+- Adjusted scores (+20 points)
+- Risk metrics (total, average)
+- Perfect score detection
+- Severe risk identification
 
-**Example:**
+**Array Methods Used:** filter, map, reduce, some, every, find, findIndex
+
+---
+
+### Question 3: Fraud Detection
+**Run:** `node question3.js`
+
+**Prompts:**
+- Enter transaction IDs (comma-separated)
+- Enter fraud ID to check
+
+**Example input:**
+- Transaction IDs: `1042,8922,3301,5510,7719,9920`
+- Fraud ID: `5510`
+
+**Shows:**
+- Fraud presence check
+- Fraud position
+- Last 3 transactions
+- Fraud removal
+- Safe transaction clearing
+
+**Array Methods Used:** includes, indexOf, slice, splice, forEach
+
+---
+
+### Question 4: Bank Merger
+**Run:** `node question4.js`
+
+**Prompts:**
+- Enter Branch A customers (comma-separated)
+- Enter Branch B customers (comma-separated)
+- Enter messy data (use semicolons for groups)
+
+**Example input:**
+- Branch A: `Alice,Bob`
+- Branch B: `Charlie,Diana`
+- Messy data: `Eve,Frank;Grace;Hank,Ivy`
+
+**Shows:**
+- Merged customers
+- Flattened data
+- Sorted data (A-Z and Z-A)
+- Welcome banner
+- Teller windows initialization
+
+**Array Methods Used:** concat, flat, sort, reverse, join, fill
+
+---
+
+### Question 5: Security System
+**Run:** `node question5.js`
+
+Shows a menu:
 ```
 --- Security System Menu ---
 1. Validate Password
 2. Generate Yearly Report
 3. Exit
----------------------------
-Enter your choice: 1
-Enter password to validate: MySecure123
 ```
 
----
+**Option 1 - Password Validation:**
+- Enter a password to check
+- Requirements:
+  - At least 8 characters
+  - No "password" substring
+  - Must contain a vowel
 
-## 💡 Tips
+**Option 2 - Yearly Report:**
+- Enter start year
+- Enter end year
+- Shows leap years and anniversaries
 
-1. **For Testing/Grading**: Use the demo versions (question1.js, question2.js, etc.)
-2. **For Learning/Playing**: Use the interactive versions (question1-interactive.js, etc.)
-3. **To See Everything**: Run `node run-all.js` to see all demos at once
-4. **Invalid Input**: Interactive versions will use default examples if you enter invalid data
+**Methods Used:** String methods, conditionals, loops
 
 ---
 
 ## ✅ Requirements
 
-- **Node.js** installed (version 12 or higher)
-- That's it! No other dependencies needed.
+- **Node.js** (version 12 or higher)
+- No other dependencies needed!
+
+---
+
+## 💡 Tips
+
+1. **Invalid Input**: If you enter invalid data, the program will use default examples
+2. **Exit Programs**: Press `Ctrl + C` to force exit any program
+3. **Repeat**: Most programs ask if you want to run again after completion
 
 ---
 
 ## 🆘 Troubleshooting
 
-**Problem**: "node is not recognized"
-**Solution**: Install Node.js from https://nodejs.org/
+**Problem:** "node is not recognized"
+**Solution:** Install Node.js from https://nodejs.org/
 
-**Problem**: Interactive version not accepting input
-**Solution**: Make sure you're running in a terminal/command prompt, not in a browser
+**Problem:** Program not accepting input
+**Solution:** Make sure you're running in terminal/command prompt
 
-**Problem**: Want to stop an interactive program
-**Solution**: Press `Ctrl + C` to exit
+**Problem:** Want to stop a program
+**Solution:** Press `Ctrl + C`
 
 ---
 
-## 📚 What You'll Learn
+## 🎓 What You'll Learn
 
-- **Array Mutation Methods**: push, pop, shift, unshift
-- **Array Iteration Methods**: filter, map, reduce, some, every, find, findIndex
-- **Array Accessor Methods**: includes, indexOf, slice, splice, forEach
-- **Array Formatting Methods**: concat, flat, sort, reverse, join, fill
+- **Array Mutation**: push, pop, shift, unshift
+- **Array Iteration**: filter, map, reduce, some, every, find, findIndex
+- **Array Accessor**: includes, indexOf, slice, splice, forEach
+- **Array Formatting**: concat, flat, sort, reverse, join, fill
 - **String Methods**: length, toLowerCase, includes
+- **User Input**: readline module
 - **Conditionals & Loops**: if/else, for loops
-- **User Input**: readline module for interactive programs
-
----
-
-## 🎓 Assignment Structure
-
-Each question demonstrates specific JavaScript concepts:
-
-1. **Question 1**: Array mutation + balance management
-2. **Question 2**: Array iteration + data processing
-3. **Question 3**: Array search + fraud detection
-4. **Question 4**: Array formatting + data cleanup
-5. **Question 5**: String validation + logic + loops
 
 ---
 
