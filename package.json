@@ -1,0 +1,24 @@
+{
+  "name": "ironclad-banking-system",
+  "version": "1.0.0",
+  "description": "IronClad Banking System - JavaScript Array Methods Assignment",
+  "main": "run-all.js",
+  "scripts": {
+    "start": "node run-all.js",
+    "q1": "node question1.js",
+    "q2": "node question2.js",
+    "q3": "node question3.js",
+    "q4": "node question4.js",
+    "q5": "node question5.js",
+    "test": "node run-all.js"
+  },
+  "keywords": [
+    "javascript",
+    "arrays",
+    "banking",
+    "education",
+    "shecancode"
+  ],
+  "author": "SheCanCode-7",
+  "license": "MIT"
+}
